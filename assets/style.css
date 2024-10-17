@@ -1,31 +1,32 @@
 /* CSS Document */
 .banner{
-	background-color: rgb(112, 112, 112);
+	background-color: rgb(128, 128, 128);
 	font-size: 50px;
 	font-weight: bold;
 	padding: 25px;
 	margin: 5px;
 	text-align: center;
-	border-style: dashed;
+	border-style: solid;
 }
 
 .info_section {
 	background-color: rgb(255, 209, 111);
 	border-radius: 10px;
 	border-style: double;
+	margin-bottom: 20px;
 }
 
 .nav_main {
 	width: 100%;
-	border-radius: 10px;
-	overflow: auto;
+	text-align: center;
+	display: inline-block;
+	margin-block-end: 10px;
 }
 
 .nav_item {
 	font-weight: bold;
 	padding: 7px;
 	margin: 5px;
-	text-align: center;
 	float: left;
 	width: 18%;
 	border-style: solid;
@@ -35,7 +36,6 @@
 	font-weight: bold;
 	padding: 7px;
 	margin: 5px;
-	text-align: center;
 	float: left;
 	width: 18%;
 	border-style: solid;
@@ -43,5 +43,9 @@
 }
 
 .clear_float {
-	clear: left;
+	float: none;
+}
+
+html {
+    width: 100%;
 }
