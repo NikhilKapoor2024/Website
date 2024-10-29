@@ -1,22 +1,69 @@
-function randomNumber(max) {
-    // generates random number between 0 and a max
-    return Math.floor(Math.random() * max);
+/* constant lists of words and hints */
+const words = [
+    "test",
+    "lego",
+    "monster",
+    "python",
+    "water",
+    "loathsome"
+];
+const hints = [
+    "Literally easiest one in the word",
+    "studded building blocks",
+    "scary creature",
+    "best coding language ever",
+    "liquid",
+    "giving rise to loathing"
+];
+
+// Initalizing word that displays
+let displayWord = "";
+
+/*
+ * Function: scramble_letters(String: str)
+ * Purpose: Scrambles a word
+ */
+function scramble_letters(str) {
+    array_str = Array.from(str);
+    for (let i = 0; i < array_str.length - 1; i++) {
+        let j = Math.floor(Math.random() * array_str.length);
+        let temp = array_str[i];
+        array_str[i] = array_str[j];
+        array_str[j] = temp;
+    }
+
+    return array_str.join(" ");
 }
 
-function randomName() {
-    // randomly selects name from list
-    let names = ['Nikhil', 'Bob', 'Joe', 'Stan', 'John'];
-    let rng = randomNumber(names.length);
-    return names[rng];
+/*
+ * Function: check()
+ * Purpose: checks the input and displayWord for match
+ */
+function check() {
+    let input = document.getElementById("input");
+    let output = document.getElementById("output");
+
+    if (input.value.toLocaleLowerCase() === displayWord.toLocaleLowerCase()) {
+        output.innerHTML = "Result: Correct!";
+    } else {
+        output.innerHTML = "Result: Incorrect!";
+    }
 }
 
-function colorChanger() {
-    // randomly selects color to change text to
-    let colors = [];
-    colors[0] = 'red';
-    colors[1] = 'green';
-    colors[2] = 'blue';
-    colors[3] = 'purple';
-    let text = document.getElementById('demo_three');
-    text.style.color = colors[randomColor(4)];
+/*
+ * Function: refresh()
+ * Purpose: refreshes page to load a new word
+ */
+function refresh() {
+    index = Math.floor(Math.random() * words.length);
+    displayWord = words[index];
+    displayHint = hints[index];
+    scrambleWord = document.getElementById("scramble_word");
+    scrambleWord.innerText = scramble_letters(displayWord).toUpperCase();
+    let hint = document.getElementById("hint");
+    hint.innerHTML = "<b>Hint:</b> " + displayHint;
+    document.getElementById("output").innerText = "Result:";
 }
+
+// Function call when page loads for the first time
+refresh();
